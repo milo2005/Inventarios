@@ -1,0 +1,43 @@
+<div class="card white">
+    <div class="card-content">
+        <span class="card-title">Productos</span>
+        <p class="grey-text" *ngIf="data.length == 0; else table">No hay productos registrados</p>
+        <ng-template #table>
+            <table class="highlight responsive-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickeable" *ngFor="let p of data" >
+                        <td (click)="goToEdit(p)">{{p.name}}</td>
+                        <td (click)="goToEdit(p)">{{p.description}}</td>
+                        <td (click)="goToEdit(p)">{{p.price}}</td>
+                        <td><i class="material-icons tiny grey-text" (click)="deleteDialog(p)">clear</i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </ng-template>
+    </div>
+</div>
+
+<div id="deleteDialog" class="modal">
+    <div class="modal-content">
+        <h4>Eliminar Producto</h4>
+        <p>¿Desea eliminar el producto?</p>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="deleteProduct()">Aceptar</a>
+        <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+</div>
+
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large lime">
+      <i class="large material-icons" (click)="goToAdd()">add</i>
+    </a>
+</div>

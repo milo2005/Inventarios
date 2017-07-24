@@ -1,0 +1,35 @@
+<nav class="transparent z-depth-0">
+  <div class="nav-wrapper">
+    <div>
+      <a routerLink="../" class="breadcrumb dark">Inventario</a>
+      <a class="breadcrumb dark">Agregar</a>
+    </div>
+  </div>
+</nav>
+
+<div class="card white">
+    <div class="card-content">
+        <span class="card-title">Nuevo Producto</span>
+        <p class="grey-text">Llena todos los campos</p>
+        <form #form="ngForm">
+        <div class="row">
+            <div class="input-field col s12 col m6">
+                <input name="name" #name="ngModel" type="text" [(ngModel)]="product.name" [class.invalid]="!name.valid && !name.pristine" class="validate" required>
+                <label for="name">Nombre</label>
+            </div>
+            <div class="input-field col s12 col m6">
+                <input name="price" #price="ngModel" type="number" [(ngModel)]="product.price" [class.invalid]="!price.valid && !price.pristine" class="validate" required>
+                <label for="price">Precio</label>
+            </div>
+            <div class="input-field col s12">
+                <input name="des" #des="ngModel" type="text" [(ngModel)]="product.description" [class.invalid]="!des.valid && !des.pristine" class="validate" required>
+                <label for="des">Descripción</label>
+            </div>
+
+        </div>
+        <div class="row">
+            <button (click)="add()" class="btn waves-effect waves-light btn blue col s12" type="submit" [disabled]="!form.valid">Agregar</button>
+        </div>  
+    </form>
+    </div>
+</div>
